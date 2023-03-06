@@ -12,12 +12,23 @@ async function getWeather(){
     console.log(response);
     console.log(tempCelcius);
 
-    document.querySelector('#temperatura').innerHTML = `A temperatura atual é de ${tempCelcius}°C.`
+    documento = document.querySelector('#temperatura');
+
+    let temp = response.data.main;
+    let weather = response.data.weather[0];
+
+    documento.innerHTML = `A temperatura atual é de ${tempCelcius}°C.<br>`
+    documento.innerHTML += `A sensação térmica é de ${response.data.main.feels_like}°C.<br>`
+    documento.innerHTML += `Temperatura máxima é ${response.data.main.temp_max}°C.<br>`
+    documento.innerHTML += `Temperatura mínima de ${temp.temp_min}°C.<br>`
+    documento.innerHTML += `${weather.description}.<br>`
+
+
 
 }
 
 getWeather();
 
-const fazessapohaai = () =>{
+const pesquisar = () =>{
     getWeather();
 }
